@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task2</title>
+</head>
+
+<body>
+    <h3>Task 2 in console log</h3>
+    <script>
+        function sortStringAlphabetically(inputString) {
+            const charArray = inputString.split('');
+            const sortedArray = charArray.sort();
+            const sortedString = sortedArray.join('');
+
+            return sortedString;
+        }
+
+        const inputString = prompt("Enter a string");
+        const sorted = sortStringAlphabetically(inputString);
+        console.log(sorted);
+
+
+    </script>
+</body>
+
+</html>

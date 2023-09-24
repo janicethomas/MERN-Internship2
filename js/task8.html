@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task5</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-image: linear-gradient(180deg, rgb(255, 255, 173), rgb(252, 110, 174));
+            max-width: 70vw;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input[type='text'] {
+            width: 97%;
+        }
+
+        input[type='password'] {
+            width: 97%;
+        }
+
+        input[type='number'] {
+            width: 97%;
+        }
+
+        input[type='submit'] {
+            background-color: red;
+            color: white;
+            border: 2px solid blue;
+            border-radius: 15px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="color: blue;">Registration Form</h1>
+        <form name="myForm" onsubmit="return validateForm()" method="post">
+            <table>
+                <tr>
+                    <th>
+                        <label for="fname">First Name</label>
+                    </th>
+                    <td>
+                        <input type="text" id="fname">
+                    </td>
+                    <td>
+                        <span class="error" id="fnameError"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="lname">Last Name</label>
+                    </th>
+                    <td>
+                        <input type="text" id="lname">
+                    </td>
+                    <td>
+                        <span class="error" id="lnameError"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="email">Email</label>
+                    </th>
+                    <td>
+                        <input type="text" id="email">
+                    </td>
+                    <td>
+                        <span class="error" id="emailError"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="psswd">Password</label>
+                    </th>
+                    <td>
+                        <input type="password" id="psswd">
+                    </td>
+                    <td>
+                        <span class="error" id="psswdError"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="repsswd">Re-enter Password</label>
+                    </th>
+                    <td>
+                        <input type="password" id="repsswd">
+                    </td>
+                    <td>
+                        <span class="error" id="repsswdError"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="gender">Gender</label>
+                    </th>
+                    <td>
+                        <input type="radio" id="gender" name="gender" value="Male" checked>
+                        <label for="male">Male</label>
+                        <br>
+                        <input type="radio" id="gender" name="gender" value="Female">
+                        <label for="male">Female</label>
+                        <br>
+                        <input type="radio" id="other" name="other" value="other">
+                        <label for="other">Other</label>
+                    </td>
+                    <td>
+                        <span class="error" id="genderError"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="age">Age</label>
+                    </th>
+                    <td>
+                        <input type="number" id="age">
+                    </td>
+                    <td>
+                        <span class="error" id="ageError"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="pno">Phone Number</label>
+                    </th>
+                    <td>
+                        <input type="text" id="pno">
+                    </td>
+                    <td>
+                        <span class="error" id="pnoError"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="addrs">Address</label>
+                    </th>
+                    <td>
+                        <textarea name="addrs" id="addrs" cols="25" rows="6"></textarea>
+                    </td>
+                    <td>
+                        <span class="error" id="addrsError"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="country">Country</label>
+                    </th>
+                    <td>
+                        <select name="country" id="country">
+                            <option value="India">India</option>
+                            <option value="USA">USA</option>
+                            <option value="UK">UK</option>
+                        </select>
+                    </td>
+                    <td>
+                        <span class="error" id="countryError"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="lang">Languages Known</label>
+                    </th>
+                    <td>
+                        <input type="checkbox" id="eng" checked>
+                        <label for="eng">English</label>
+                        <input type="checkbox" id="kan">
+                        <label for="kan">Kannada</label>
+                        <input type="checkbox" id="hin">
+                        <label for="hin">Hindi</label>
+                        <input type="checkbox" id="tel">
+                        <label for="tel">Telugu</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="checkbox" id="declare">
+                        <label for="declare">Hereby, I declare that all the details given are true</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" colspan="2">
+                        Log in to
+                        <a href="https://ethnus.com/" title="Ethnus">Ethnus</a> website
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <input type="submit" value="Register">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script>
+        function validateForm() {
+            var check = true;
+            var fnameInput = document.forms["myForm"]["fname"].value;
+            var lnameInput = document.forms["myForm"]["lname"].value;
+            var emailInput = document.forms["myForm"]["email"].value;
+            var psswdInput = document.forms["myForm"]["psswd"].value;
+            var repsswdInput = document.forms["myForm"]["repsswd"].value;
+            var ageInput = document.forms["myForm"]["age"].value;
+            var pnoInput = document.forms["myForm"]["pno"].value;
+             var addrsInput = document.forms["myForm"]["addrs"].value;
+
+            if (fnameInput.length <= 2) {
+                document.getElementById('fnameError').innerHTML = "POOR";
+                check = false;
+            }
+            else if (fnameInput.length > 2){
+                check = true;
+            }
+
+            if (lnameInput.length <= 2) {
+                document.getElementById('lnameError').innerHTML = "POOR";
+                check = false;
+            }
+            else if (lnameInput.length > 2){
+                check = true;
+            }
+
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(emailInput)) {
+                document.getElementById('emailError').innerHTML = "POOR";
+                check = false;
+            }
+            else if (emailPattern.test(emailInput)) {
+                check = true;
+            }
+
+            if (psswdInput != repsswdInput || psswdInput === "") {
+                document.getElementById('repsswdError').innerHTML = "NO MATCH";
+                check = false;
+            }
+            else if (psswdInput === repsswdInput){
+                check = true;
+            }
+
+            if (ageInput.length >= 3 || ageInput==="") {
+                document.getElementById('ageError').innerHTML = "INVALID";
+                check = false;
+            }
+            else if (ageInput.length < 3) {
+                check = true;
+            }
+
+            var pnoPattern = /\b9\d{9}\b/;
+            if (!pnoPattern.test(pnoInput)) {
+                document.getElementById('pnoError').innerHTML = "INVALID";
+                check = false;
+            }
+
+             if (addrsInput === "") {
+                 document.getElementById('addrsError').innerHTML = "INVALID"
+             }
+
+            if (check == false) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    </script>
+</body>
+
+</html>

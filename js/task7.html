@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task7</title>
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 28vh;
+        }
+
+        .container1 {
+            display: flex;
+        }
+
+        h2 {
+            color: blue;
+        }
+
+        #myimg {
+            position: absolute;
+            left: 0;
+            transition: left 2s linear;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="container1"><img id="myimg" src="train.png" /></div>
+        <div class="container">
+            <h2>Click the following buttons to add animation</h2><br>
+            <div>
+                <input type="button" value="Start" id="start">
+                <input type="button" value="Stop" id="stop">
+            </div>
+        </div>
+    </div>
+    <script>
+        var isMoving = false;
+        var animationTimeout;
+        var imageElement = document.getElementById('myimg');
+        var startBtn = document.getElementById('start');
+        var stopBtn = document.getElementById('stop');
+
+        function startAnimation() {
+            if (!isMoving) {
+                isMoving = true;
+                imageElement.style.left = '100%';
+                animationTimeout = setTimeout(function () {
+                    imageElement.style.left = '0';
+                    isMoving = false;
+                }, 2000);
+            }
+        }
+
+        function stopAnimation() {
+            if (isMoving) {
+                clearTimeout(animationTimeout);
+                imageElement.style.left = '0';
+                isMoving = false;
+            }
+        }
+
+        startBtn.addEventListener('click', startAnimation);
+        stopBtn.addEventListener('click', stopAnimation);
+    </script>
+</body>
+
+</html>

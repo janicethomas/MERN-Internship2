@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task6</title>
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 26vh;
+            background-color: rgb(239, 239, 239);
+            max-width: 22vw;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2%;
+            box-shadow: 0px 1.5px grey;
+        }
+
+        .input {
+            min-width: 20vw;
+            min-height: 5vh;
+            border: 1px solid grey;
+            border-radius: 3px;
+        }
+
+        .btn {
+            min-width: 20vw;
+            min-height: 6vh;
+            background-color: rgb(47, 47, 255);
+            color: white;
+            border: none;
+            border-radius: 2px;
+        }
+
+        .btn:hover {
+            background-color: blue;
+        }
+
+        table {
+            min-width: 20vw;
+        }
+
+        .box {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i>Instagram</i></h1>
+        <form name="myForm" onsubmit="return validateForm()" method="post">
+            <label for="name"></label>
+            <input type="text" id="name" name="name" placeholder="Username" class="input">
+            <span class="error" id="nameError"></span>
+            <br><br>
+    
+            <label for="passwd"></label>
+            <input type="password" id="passwd" name="passwd" placeholder="Password" class="input">
+            <span class="error" id="passwdError"></span>
+            <br><br>
+
+            <input type="submit" value="Log in" class="btn">
+            <br><br>
+            <table>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="" id="">Remember me
+                    </td>
+                    <td style="text-align: right;"><a href="">Forgot Password</a></td>
+                </tr>
+            </table>
+        </form>
+    </div> <br>
+    <div class="box">Don't have an account! <a href="">Sign up here.</a></div>
+    <script>
+        function validateForm() {
+             var nameInput = document.forms["myForm"]["name"].value;
+             var passwdInput = document.forms["myForm"]["passwd"].value;
+ 
+             if (nameInput === "") {
+                alert("A valid username is required");
+                return false;
+             }
+             if (passwdInput === "") {
+                alert("A valid password is required");
+                return false;
+             }
+            return true;
+         }
+     </script>
+</body>
+</html>

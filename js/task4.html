@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task4</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="">
+            <input type="button" value="Show date" onclick = "showdate()">
+            <br><br>
+            <div id="date"></div>
+            <br><br><br>
+            <input type="button" value="Show time" onclick = "showtime()">
+            <br><br>
+            <div id="time"></div>
+        </form>
+    </div>
+    <script>
+       function showdate() {
+            var now = new Date();
+            var options = { year: 'numeric', month: 'long', day: 'numeric' };
+            var date = now.toLocaleDateString(undefined, options);
+            date = date.replace(/ /g, '/');
+            document.getElementById('date').innerHTML= date;
+       }
+
+       function showtime() {
+            var now = new Date();
+            var time = now.toTimeString();
+            document.getElementById('time').innerHTML= time;
+       }
+    </script>
+</body>
+</html>
